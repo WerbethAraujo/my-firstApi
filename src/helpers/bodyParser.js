@@ -1,3 +1,5 @@
+//função que recebe os dados do body da request e concatena, retornando o body completo
+//para os métodos Put, patch e post
 function bodyParser(request, callback) {
   let body = "";
 

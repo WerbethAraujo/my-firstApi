@@ -1,6 +1,8 @@
 let users = require("../mocks/users");
 
+//array com todos os controllers
 module.exports = {
+  //Lista todos os úsuarios
   listUsers(request, response) {
     const { order } = request.query;
     const sortdUsers = users.sort((antes, dpois) => {
@@ -13,7 +15,7 @@ module.exports = {
 
     response.send(200, sortdUsers);
   },
-
+  //busca um úsuario pelo id
   getUserById(request, response) {
     const { id } = request.params;
 
@@ -25,6 +27,7 @@ module.exports = {
     }
   },
 
+  //cria um novo úsuario
   createUser(request, response) {
     const { body } = request;
 
@@ -39,6 +42,7 @@ module.exports = {
     response.send(200, newUser);
   },
 
+  //atualiza os dados de um úsuario
   updateUser(request, response) {
     let { id } = request.params;
     id = Number(id);
@@ -61,7 +65,7 @@ module.exports = {
     });
     response.send(200, { id, name, age });
   },
-
+  //apaga um úsuario
   deleteUser(request, response) {
     let { id } = request.params;
 
