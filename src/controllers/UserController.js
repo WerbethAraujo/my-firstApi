@@ -11,9 +11,7 @@ module.exports = {
       }
     });
 
-    if (order === "desc")
-      response.writeHead(200, { "Content-Type": "application/json" });
-    response.end(JSON.stringify(sortdUsers));
+    response.send(200, sortdUsers);
   },
 
   getUserById(request, response) {
@@ -21,11 +19,9 @@ module.exports = {
 
     const user = users.find((user) => user.id === Number(id));
     if (!user) {
-      response.writeHead(400, { "Content-Type": "application/json" });
-      response.end(JSON.stringify({ Error: "User not found" }));
+      return response.send(400, { Error: "User not found" });
     } else {
-      response.writeHead(200, { "Content-Type": "application/json" });
-      response.end(JSON.stringify({ user }));
+      response.send(200, user);
     }
   },
 };
