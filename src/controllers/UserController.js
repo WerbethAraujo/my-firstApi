@@ -61,4 +61,18 @@ module.exports = {
     });
     response.send(200, { id, name, age });
   },
+
+  deleteUser(request, response) {
+    let { id } = request.params;
+
+    id = Number(id);
+
+    const userExists = users.find((user) => user.id === id);
+    if (!userExists) {
+      return response.send(400, { Error: "user not found" });
+    }
+
+    users = users.filter((user) => user.id !== id);
+    response.send(200, { Deletad: "Successfully deletad" });
+  },
 };
